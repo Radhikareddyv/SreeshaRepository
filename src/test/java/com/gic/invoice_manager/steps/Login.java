@@ -36,4 +36,58 @@ public class Login extends CommonFunctions {
        WebElement loginSuccessfulElement = driver.findElement(By.xpath("//p[contains(text(),'Logged In Successfully')]"));
         Assert.assertTrue(loginSuccessfulElement.isDisplayed());
     }
+
+    @Given("^I enter Invalid Username as \"(.*?)\"$")
+    public void i_enter_Invalid_Username_as(String userName)  {
+        driver.findElement(By.xpath("//input[@id='inputEmail']")).sendKeys(userName);
+
+    }
+
+    @Then("^I should get Unable to Login message \"(.*?)\"$")
+    public void i_should_get_Unable_to_Login_message(String acctualResult)  {
+        WebElement expectedResult = driver.findElement(By.xpath("//p[contains(text(),'Logged In Successfully')]"));
+        Assert.assertEquals(expectedResult,acctualResult);
+    }
+
+    @Given("^I enter Invalid password \"(.*?)\"$")
+    public void i_enter_Invalid_password(String invalidPassword)  {
+        driver.findElement(By.xpath("//input[@id='inputPassword']")).sendKeys(invalidPassword);
+
+    }
+
+    @When("^I click Forgot Password$")
+    public void i_click_Forgot_Password()  {
+        driver.findElement(By.xpath("//a[contains(text(),'Click here to reset')]")).click();
+    }
+
+    @Then("^I should redirect to Forgot Password Page$")
+    public void i_should_redirect_to_Forgot_Password_Page()  {
+       WebElement forgotPasswordPageVerification = driver.findElement(By.xpath("//div[contains(text(),'Forgot Password?')]"));
+       Assert.assertTrue(forgotPasswordPageVerification.isDisplayed());
+    }
+
+    @Then("^I enter Email Address \"(.*?)\"$")
+    public void i_enter_Email_Address(String emailId)  {
+        driver.findElement(By.xpath("//input[@id='email']")).sendKeys(emailId);
+    }
+
+    @Then("^I click submit$")
+    public void i_click_submit()  {
+        driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+
+    }
+
+    @Then("^I should get message \"(.*?)\"$")
+    public void i_should_get_message(String resetPageAcctualResult) {
+       WebElement resetPageExpectedResult = driver.findElement(By.xpath("//strong[contains(text(),'Could not instantiate mail function.')]"));
+       Assert.assertEquals(resetPageExpectedResult,resetPageAcctualResult);
+
+    }
+
+
+
+
 }
+
+
+
