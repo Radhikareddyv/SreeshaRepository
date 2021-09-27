@@ -36,4 +36,21 @@ public class Login extends CommonFunctions {
        WebElement loginSuccessfulElement = driver.findElement(By.xpath("//p[contains(text(),'Logged In Successfully')]"));
         Assert.assertTrue(loginSuccessfulElement.isDisplayed());
     }
+
+    @Given("^I enter Invalid Username as \"(.*?)\"$")
+    public void i_enter_Invalid_Username_as(String userName)  {
+        driver.findElement(By.xpath("//input[@id='inputEmail']")).sendKeys(userName);
+
+    }
+
+    @Then("^I should get Unable to Login message \"(.*?)\"$")
+    public void i_should_get_Unable_to_Login_message(String acctualResult)  {
+        WebElement expectedResult = driver.findElement(By.xpath("//p[contains(text(),'Logged In Successfully')]"));
+        Assert.assertEquals(expectedResult,acctualResult);
+    }
+
+
 }
+
+
+
