@@ -1,5 +1,5 @@
 Feature: AddProduct-ListProduct
-
+@addProductlistProduct
   Scenario: A system admin is able to add products to the system
 
     Given I'm On Invoice Manager Login Page
@@ -9,7 +9,7 @@ Feature: AddProduct-ListProduct
     And I am redirected to Invoice Manager Home Page
     And I enter new url "http://3.13.126.58/AMS3.0/home"
     And I click on the Products Menu
-    And I should get the dropdown with - List Products & Add product option
+    And I should get the dropdown
     And I click on Add product
     And I should be provided with a New product page with following fields Name,Details,Price&Add product button.
     When I enter Name as "KitchenAid"
