@@ -22,48 +22,49 @@ public class AddProductListProduct extends CommonFunctions {
     {driver.get(url);}
 
     @Given("^I click on the Products Menu$")
-    public void i_click_on_the_Products_Menu() {driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]")).click();
-    }
-
-    @Given("^I should get the dropdown$")
-    public void i_should_get_the_dropdown() {
-        Select dropdown = new Select(driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]/span[1]/b[1]")));
-        dropdown.selectByVisibleText("Add Product");
-        dropdown.selectByIndex(1);
+    public void i_click_on_the_Products_Menu()throws InterruptedException {
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("/html/body/div[2]/div/nav/ul/li[3]/a")).click();
     }
     @Given("^I click on Add product$")
-    public void i_click_on_Add_product(){
-        driver.findElement(By.xpath("products_add")).click();
+    public void i_click_on_Add_product()throws InterruptedException{
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//a[@id='products_add']")).click();
     }
     @Given("^I should be provided with a New product page with following fields Name,Details,Price&Add product button\\.$")
-    public void i_should_be_provided_with_a_New_product_page_with_following_fields_Name_Details_Price_Add_product_button() {
-        WebElement newProductPage = driver.findElement(By.xpath("//body/div[3]/div[2]/h2[1]"));
+    public void i_should_be_provided_with_a_New_product_page_with_following_fields_Name_Details_Price_Add_product_button()throws InterruptedException {
+        Thread.sleep(10000);
+        WebElement newProductPage = driver.findElement(By.xpath("/html/body/div[3]/div[2]/h2"));
         Assert.assertTrue(newProductPage.isDisplayed());
-        WebElement newNameDetailsPrice = driver.findElement(By.xpath("//label[contains(text(),'Name')],//label[contains(text(),'Details')],//label[contains(text(),'Price')]"));
-        Assert.assertTrue(newNameDetailsPrice.isDisplayed());
-        WebElement newAddProductButton = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[4]/div[1]/form[1]/div[4]/div[1]/input[1]"));
-        Assert.assertTrue(newAddProductButton.isDisplayed());
+        WebElement name = driver.findElement(By.xpath("/html/body/div[3]/div[4]/div[1]/form/div[1]/label"));
+        Assert.assertTrue(name.isDisplayed());
+        WebElement details = driver.findElement(By.xpath("//label[contains(text(),'Details')]"));
+        Assert.assertTrue(details.isDisplayed());
+        WebElement price = driver.findElement(By.xpath("//label[contains(text(),'Price')]"));
+        Assert.assertTrue(price.isDisplayed());
+        WebElement addProductButton = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[4]/div[1]/form[1]/div[4]/div[1]/input[1]"));
+        Assert.assertTrue(addProductButton.isDisplayed());
     }
     @When("^I enter Name as \"(.*?)\"$")
-    public void i_enter_Name_as(String arg1)  {
+    public void i_enter_Name_as(String name)  {
+        driver.findElement(By.xpath("//input[@id='name']")).sendKeys(name);
     }
-
     @When("^I enter Details - \"(.*?)\"$")
-    public void i_enter_Details(String arg1)  {
-
+    public void i_enter_Details(String details)  {
+        driver.findElement(By.xpath("//textarea[@id='details']")).sendKeys(details);
     }
-
     @When("^I enter Price - \"(.*?)\"$")
-    public void i_enter_Price(String arg1)  {
+    public void i_enter_Price(String price)
+    {driver.findElement(By.xpath("//input[@id='price']")).sendKeys(price);
     }
-
     @When("^I click on Add product button$")
-    public void i_click_on_Add_product_button()  {
+    public void i_click_on_Add_product_button()
+    {driver.findElement(By.xpath("//body/div[3]/div[4]/div[1]/form[1]/div[4]/div[1]/input[1]")).click();
     }
-
-    @Then("^I should be provided with below message \"(.*?)\"$")
-    public void i_should_be_provided_with_below_message(String arg1) {
-
+    @Then("^I should be redirected to List Products page$")
+    public void i_should_be_redirected_to_List_Products_page(){
+        WebElement productsuccessfullyadded = driver.findElement(By.xpath("//body/div[3]/div[2]"));
+        Assert.assertTrue(productsuccessfullyadded.isDisplayed());
     }
 
 }
