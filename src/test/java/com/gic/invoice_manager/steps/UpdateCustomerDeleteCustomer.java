@@ -41,8 +41,9 @@ public class UpdateCustomerDeleteCustomer extends CommonFunctions {
     }
 
     @When("^I click on edit customer in Actions$")
-    public void i_click_on_edit_customer_in_Actions()  {
-        driver.findElement(By.xpath("//tbody/tr[4]/td[7]/center[1]/div[1]/a[3]/i[1]")).click();
+    public void i_click_on_edit_customer_in_Actions() throws InterruptedException {
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//tbody/tr[1]/td[7]/center[1]/div[1]/a[3]/i[1]")).click();
 
     }
 
@@ -75,9 +76,11 @@ public class UpdateCustomerDeleteCustomer extends CommonFunctions {
     }
 
     @Then("^I will redirect to customers page and i'll get message that \"(.*?)\"$")
-    public void i_will_redirect_to_customers_page_and_i_ll_get_message_that(String actualResult)  {
-       WebElement expectedResult = driver.findElement(By.xpath("/html/body/div[3]/div[2]"));
-       Assert.assertEquals(expectedResult,actualResult);
+    public void i_will_redirect_to_customers_page_and_i_ll_get_message_that(String expectedResult) throws InterruptedException {
+        Thread.sleep(5000);
+       WebElement actualResult = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
+      String test=actualResult.getText();
+       Assert.assertEquals(expectedResult,test);
 
     }
 

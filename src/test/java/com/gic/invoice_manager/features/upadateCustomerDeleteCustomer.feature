@@ -16,6 +16,6 @@ Feature: Update or Delete existing customer
       When I click on edit customer in Actions
       Then I will redirect to edit customer page
       And I updated company name to "Asda"
-     And I updated email address to "sirihari2205@gmail.com"
+     And I updated email address to "sreesha2205@gmail.com"
      And I click on update customer
      Then I will redirect to customers page and i'll get message that "Customer Successfully Updated"
