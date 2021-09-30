@@ -4,7 +4,7 @@ Feature: Login
     And I enter Username as "admin@gic.com"
     And I enter Password as "Admin123"
     When I click on Login
-    Then I redirected to Invioce Manager Home Page
+    Then I redirected to Invoice Manager client Page
 
 
     Scenario: Login with Invalid email valid password

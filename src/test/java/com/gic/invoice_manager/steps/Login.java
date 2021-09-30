@@ -31,8 +31,8 @@ public class Login extends CommonFunctions {
         driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
     }
 
-    @Then("^I redirected to Invioce Manager Home Page$")
-    public void i_redirected_to_Invioce_Manager_Home_Page()  {
+    @Then("^I redirected to Invoice Manager client Page$")
+    public void i_redirected_to_Invoice_Manager_Home_Page()  {
        WebElement loginSuccessfulElement = driver.findElement(By.xpath("//p[contains(text(),'Logged In Successfully')]"));
         Assert.assertTrue(loginSuccessfulElement.isDisplayed());
     }
