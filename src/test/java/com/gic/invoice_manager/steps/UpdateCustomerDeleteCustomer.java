@@ -6,11 +6,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 public class UpdateCustomerDeleteCustomer extends CommonFunctions {
 
@@ -35,8 +32,11 @@ public class UpdateCustomerDeleteCustomer extends CommonFunctions {
     }
 
         @Given("^I go to search for the particular customer \"(.*?)\"$")
-    public void i_go_to_search_for_the_particular_customer(String customer)  {
+    public void i_go_to_search_for_the_particular_customer(String customer) throws InterruptedException {
+        Thread.sleep(5000);
         driver.findElement(By.xpath("//input[@id='search_table']")).sendKeys(customer);
+        WebElement textbox = driver.findElement(By.xpath("//input[@id='search_table']"));
+        textbox.sendKeys(Keys.ENTER);
 
     }
 
@@ -54,6 +54,8 @@ public class UpdateCustomerDeleteCustomer extends CommonFunctions {
     @Then("^I updated company name to \"(.*?)\"$")
     public void i_updated_company_name_to(String companyName) throws InterruptedException {
         Thread.sleep(5000);
+        driver.findElement(By.xpath("//input[@id='company']")).click();
+        driver.findElement(By.xpath("//input[@id='company']")).clear();
         driver.findElement(By.xpath("//input[@id='company']")).sendKeys(companyName);
 
     }
@@ -61,6 +63,7 @@ public class UpdateCustomerDeleteCustomer extends CommonFunctions {
     @Then("^I updated email address to \"(.*?)\"$")
     public void i_updated_email_address_to(String emailAddress) throws InterruptedException {
         Thread.sleep(5000);
+        driver.findElement(By.xpath("//input[@id='email']")).clear();
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys(emailAddress);
 
     }
