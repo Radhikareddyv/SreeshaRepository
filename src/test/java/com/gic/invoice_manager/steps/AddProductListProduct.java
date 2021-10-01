@@ -89,9 +89,8 @@ public class AddProductListProduct extends CommonFunctions {
     }
     @Then("^I should get a message \"(.*?)\"$")
     public void i_should_get_a_message(String unableToAddMessage) throws Throwable {
-        WebElement unableToAddProduct = unableToAddMessage;
-        driver.findElement(By.xpath("//body/div[3]/div[2]"));
-        Assert.assertEquals(unableToAddProduct,unableToAddMessage);
+        WebElement unableToAddProduct = driver.findElement(By.xpath("//body/div[3]/div[2]"));
+        Assert.assertTrue(unableToAddProduct.isDisplayed());
 
     }
 }
