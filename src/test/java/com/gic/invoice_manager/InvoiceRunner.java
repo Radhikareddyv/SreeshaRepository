@@ -5,7 +5,7 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = ".",tags ="@SpecialCharacters",dryRun=false)
+@CucumberOptions(features = ".",tags ="@addQuotationlistQuotation",dryRun=false)
 public class InvoiceRunner {
 
 
