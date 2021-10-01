@@ -19,3 +19,13 @@ Feature: Update or Delete existing customer
      And I updated email address to "sreesha2205@gmail.com"
      And I click on update customer
      Then I will redirect to customers page and i'll get message that "Customer Successfully Updated"
+@deleteCustomer
+  Scenario: Delete Existing customer
+    Given I changed client page to home page "http://3.13.126.58/AMS3.0/home"
+    And I click on Customers
+    And I click on List Customers from the Customers drop down
+    And  I will redirect to customers list page
+    And I go to search for the particular customer "Admin"
+    When I click on delete in actions popup displays
+    Then I click ok in Pop-up
+    And I should get the message "customer deleted succesfully"

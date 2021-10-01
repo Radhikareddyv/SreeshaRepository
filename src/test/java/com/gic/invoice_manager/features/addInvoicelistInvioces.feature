@@ -12,7 +12,6 @@ Feature: Add invioce/ List invioces
   Scenario: User to create invoices to required the customer.
     Given I changed client page to home page "http://3.13.126.58/AMS3.0/home"
     And I click on sales
-    And I should get drop down
     And I click on Add Invoice From drop down
     Then I will redirect to add sale page
     And I selected date and time from the calender "27.09.2021 23:30"

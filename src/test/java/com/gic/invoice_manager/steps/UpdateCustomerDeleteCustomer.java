@@ -81,12 +81,25 @@ public class UpdateCustomerDeleteCustomer extends CommonFunctions {
        WebElement actualResult = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
       String test=actualResult.getText();
        Assert.assertEquals(expectedResult,test);
+    }
+
+    @When("^I click on delete in actions popup displays$")
+    public void i_click_on_delete_in_actions_popup_displays() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//tbody/tr[1]/td[7]/center[1]/div[1]/a[4]/i[1]")).click();
+    }
+
+    @Then("^I click ok in Pop-up$")
+    public void i_click_ok_in_Pop_up() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.switchTo().alert().accept();
 
     }
 
+    @Then("^I should get the message \"(.*?)\"$")
+    public void i_should_get_the_message(String expectedResult)  {
+        WebElement deleteCustomerActualResult = driver.findElement(By.xpath("//body/div[3]/div[2]"));
+        Assert.assertEquals(expectedResult,deleteCustomerActualResult);
 
-
-
-
-
+    }
 }

@@ -5,7 +5,7 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "." ,tags="@UpdateCustomer", dryRun = false)
+@CucumberOptions(features = "." ,tags="@Addinvioce", dryRun = false)
 public class InvoiceRunner {
 
 

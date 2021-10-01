@@ -21,15 +21,6 @@ public class AddinvoiceListinvioces extends CommonFunctions {
         driver.findElement(By.xpath("/html/body/div[2]/div/nav/ul/li[2]/a")).click();
     }
 
-    @Given("^I should get drop down$")
-    public void i_should_get_drop_down()  {
-        Select dropdown = new Select(driver.findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/nav[1]/ul[1]/li[3]/a[1]/span[1]/b[1]")));
-        dropdown.selectByVisibleText(" Add Invoice");
-        dropdown.selectByIndex(1);
-
-        }
-
-
     @Given("^I click on Add Invoice From drop down$")
     public void i_click_on_Add_Invoice_From_drop_down() throws InterruptedException {
         Thread.sleep(5000);
@@ -60,12 +51,11 @@ public class AddinvoiceListinvioces extends CommonFunctions {
     }
 
     @Then("^I select customer from the dropdown \"(.*?)\"$")
-    public void i_select_customer_from_the_dropdown()  {
+    public void i_select_customer_from_the_dropdown() throws InterruptedException {
        // driver.findElement(By.xpath("//span[contains(text(),'Select Customer')]")).click();
-        driver.findElement(By.xpath("//*[@id=\"customer_chosen\"]/a/span")).click();
-        driver.findElement(By.xpath("//*[@id=\"customer_chosen\"]/div/ul/li[4]")).click();
-
-
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//a[@class='chosen-single chosen-default']")).click();
+        driver.findElement(By.xpath("//*[@id=\\\"customer_chosen\\\"]/div/ul/li[4]")).click();
     }
 
     @Then("^I enter Due Date \"(.*?)\"$")
