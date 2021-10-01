@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoginPage  extends BasePage {
+public class LoginPage extends BasePage {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginPage.class);
 
@@ -31,7 +31,7 @@ public class LoginPage  extends BasePage {
 
     public void goToLoginPage() {
         LOGGER.info("Opening login page url");
-        driver.get(InvoiceConstants.APPLICATION_URL);
+        driver.get(InvoiceConstants.APPLICATION_URL + InvoiceConstants.LOGIN_ENDPOINT);
     }
 
     public void enterUsernamePassword() {

@@ -5,11 +5,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Login {
+public class LoginSteps {
 
-    private final LoginPage loginPage;
+    public LoginPage loginPage;
 
-    public Login() {
+    public LoginSteps() {
         this.loginPage = new LoginPage();
     }
 
@@ -33,4 +33,6 @@ public class Login {
     public void i_redirected_to_invoice_manager_home_page() {
         loginPage.verifyLoggedInMessage();
     }
+
+
 }
