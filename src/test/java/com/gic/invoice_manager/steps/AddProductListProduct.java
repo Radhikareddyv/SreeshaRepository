@@ -66,5 +66,32 @@ public class AddProductListProduct extends CommonFunctions {
         WebElement productsuccessfullyadded = driver.findElement(By.xpath("//body/div[3]/div[2]"));
         Assert.assertTrue(productsuccessfullyadded.isDisplayed());
     }
+    @Given("^I click on List product$")
+    public void i_click_on_List_product() throws Throwable {
+        driver.findElement(By.xpath("//a[@id='products_index']")).click();
+    }
+    @Given("^I should be provided with products page\\.$")
+    public void i_should_be_provided_with_products_page() throws Throwable {
+        WebElement products = driver.findElement(By.xpath("//body/div[3]/div[2]/h2[1]"));
+        Assert.assertTrue(products.isDisplayed());
+    }
+    @When("^I enter Product Name as \"(.*?)\"$")
+    public void i_enter_Product_Name_as(String productName) throws Throwable {
+        driver.findElement(By.xpath("//input[@id='search_table']")).sendKeys(productName);
+    }
+    @Then("^I should be provided with the List of Products with search term \"(.*?)\"$")
+    public void i_should_be_provided_with_the_List_of_Products_with_search_term(String searchTerm) throws Throwable {
+       driver.findElement(By.xpath("//*[@id=\"fileData\"]"));
+    }
+    @When("^I click on Add product button for special characters$")
+    public void i_click_on_Add_product_button_for_special_characters() throws Throwable {
+        driver.findElement(By.xpath("//body/div[3]/div[4]/div[1]/form[1]/div[4]/div[1]/input[1]")).click();
+    }
+    @Then("^I should get a message \"(.*?)\"$")
+    public void i_should_get_a_message(String unableToAddMessage) throws Throwable {
+        WebElement unableToAddProduct = unableToAddMessage;
+        driver.findElement(By.xpath("//body/div[3]/div[2]"));
+        Assert.assertEquals(unableToAddProduct,unableToAddMessage);
 
+    }
 }
