@@ -80,7 +80,7 @@ public class UpdateCustomerDeleteCustomer extends CommonFunctions {
         Thread.sleep(5000);
        WebElement actualResult = driver.findElement(By.xpath("//div[@class='alert alert-success']"));
       String test=actualResult.getText();
-       Assert.assertEquals(expectedResult,test);
+       Assert.assertTrue(test.contains(expectedResult));
     }
 
     @When("^I click on delete in actions popup displays$")

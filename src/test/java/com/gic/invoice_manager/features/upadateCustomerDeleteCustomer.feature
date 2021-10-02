@@ -28,4 +28,4 @@ Feature: Update or Delete existing customer
     And I go to search for the particular customer "Admin"
     When I click on delete in actions popup displays
     Then I click ok in Pop-up
-    And I should get the message "customer deleted succesfully"
+    And I should get the message "Customer Deleted Successfully"

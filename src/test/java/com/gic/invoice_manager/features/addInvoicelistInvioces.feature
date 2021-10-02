@@ -25,7 +25,7 @@ Feature: Add invioce/ List invioces
     And I select Recurring from the Recurring drop down "Every month"
     And I enter Quantity "1"
     And I enter product description "Erp Training"
-    And I eneter Unit Price "1500"
-    When  I click on Add Invioce
-    Then I will redirected to sales page and I get message "Invioce aded successfully"
+    And I enter Unit Price "1500"
+    When  I click on Add Invoice
+    Then I will redirected to sales page and I get message "Invoice added successfully"
 

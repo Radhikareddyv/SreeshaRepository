@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.concurrent.TimeUnit;
+
 public class AddinvoiceListinvioces extends CommonFunctions {
     @Given("^I changed client page to home page \"(.*?)\"$")
     public void i_changed_client_page_to_home_page(String Url)  {
@@ -51,11 +53,12 @@ public class AddinvoiceListinvioces extends CommonFunctions {
     }
 
     @Then("^I select customer from the dropdown \"(.*?)\"$")
-    public void i_select_customer_from_the_dropdown() throws InterruptedException {
+    public void i_select_customer_from_the_dropdown(String customer) throws InterruptedException {
        // driver.findElement(By.xpath("//span[contains(text(),'Select Customer')]")).click();
         Thread.sleep(3000);
         driver.findElement(By.xpath("//a[@class='chosen-single chosen-default']")).click();
-        driver.findElement(By.xpath("//*[@id=\\\"customer_chosen\\\"]/div/ul/li[4]")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//body/div[3]/div[4]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys(customer);
     }
 
     @Then("^I enter Due Date \"(.*?)\"$")
@@ -72,9 +75,11 @@ public class AddinvoiceListinvioces extends CommonFunctions {
     }
 
     @Then("^I select order Tax from the drop down \"(.*?)\"$")
-    public void i_select_order_Tax_from_the_drop_down(String Tax)  {
-        driver.findElement(By.xpath("//span[contains(text(),'No Tax')]")).click();
-        driver.findElement(By.xpath("//body/div[3]/div[4]/div[1]/form[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys(Tax);
+    public void i_select_order_Tax_from_the_drop_down(String tax) throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.id("order_tax_chosen")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//body/div[3]/div[4]/div[1]/form[1]/div[3]/div[2]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys(tax);
 
     }
 
@@ -102,13 +107,13 @@ public class AddinvoiceListinvioces extends CommonFunctions {
 
     }
 
-    @Then("^I eneter Unit Price \"(.*?)\"$")
+    @Then("^I enter Unit Price \"(.*?)\"$")
     public void i_enter_Unit_Price(String unitPrice)  {
         driver.findElement(By.xpath("//input[@id='price-1']")).sendKeys(unitPrice);
 
     }
 
-    @When("^I click on Add Invioce$")
+    @When("^I click on Add Invoice$")
     public void i_click_on_Add_Invoice()  {
         driver.findElement(By.xpath("//body/div[3]/div[4]/div[1]/form[1]/div[12]/input[1]")).click();
 
