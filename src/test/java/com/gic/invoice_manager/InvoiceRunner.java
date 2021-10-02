@@ -1,12 +1,13 @@
 package com.gic.invoice_manager;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "." )
+@CucumberOptions(
+        features = "src/test/resources/features",
+        glue = {""},
+        tags = "@invoice-manager")
 public class InvoiceRunner {
-
-
 }
